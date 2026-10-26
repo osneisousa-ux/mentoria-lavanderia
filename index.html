@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentoria Lavanderia Self-Service</title>
+<meta name="description" content="Mentoria de 90 dias para abrir sua lavanderia self-service do zero, sem franquia, com quem já montou a própria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13324A;      /* azul-petróleo, texto */
+    --water:#2E7FB8;    /* azul água */
+    --tile:#EAF4F6;     /* azulejo claro */
+    --foam:#FFFFFF;
+    --soap:#F2C230;     /* amarelo sabão */
+    --mute:#4E6A7E;
+    --line:#C9DEE4;
+    --radius-lg:28px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--tile);color:var(--ink);font:400 1.0625rem/1.6 "Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  :focus-visible{outline:3px solid var(--soap);outline-offset:3px;border-radius:6px}
+
+  /* botão */
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--foam);text-decoration:none;font-weight:600;padding:16px 26px;border-radius:999px;font-size:1.0625rem;transition:background .2s}
+  .btn:hover{background:var(--water)}
+  .btn svg{width:20px;height:20px}
+
+  /* topo */
+  header{padding:22px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .marca{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.125rem;display:flex;align-items:center;gap:10px}
+  .marca i{width:22px;height:22px;border-radius:50%;border:5px solid var(--ink);display:block}
+  header a.link{font-weight:600;text-decoration:none;border-bottom:2px solid var(--soap)}
+
+  /* hero */
+  .hero{padding:40px 0 80px}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;max-width:12ch}
+  .hero p.sub{font-size:1.25rem;color:var(--mute);max-width:46ch;margin:24px 0 32px}
+  .hero .nota{margin-top:18px;font-size:.95rem;color:var(--mute)}
+
+  /* a escotilha: o elemento marcante */
+  .porta{position:relative;aspect-ratio:1;max-width:420px;width:100%;justify-self:center;border-radius:50%;background:var(--foam);box-shadow:inset 0 0 0 18px #D7E7EC,0 0 0 2px var(--line)}
+  .porta svg{position:absolute;inset:0;width:100%;height:100%}
+  .porta .vidro{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#BFE0F0 0,#7FB8D9 45%,var(--water) 100%);overflow:hidden;display:grid;place-items:center;text-align:center;color:var(--foam)}
+  .porta .vidro strong{display:block;font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(4rem,10vw,6.5rem);line-height:.9}
+  .porta .vidro span{font-weight:600;font-size:1.125rem}
+  .agua{position:absolute;left:-10%;right:-10%;bottom:-40%;height:70%;background:rgba(255,255,255,.18);border-radius:45%;animation:gira 9s linear infinite}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  .anel{animation:gira 40s linear infinite;transform-origin:50% 50%}
+
+  /* seções */
+  section.bloco{padding:88px 0}
+  .titulo-sec{font-size:clamp(2rem,4vw,2.9rem);font-weight:700;max-width:20ch;margin-bottom:20px}
+  .lead{color:var(--mute);font-size:1.125rem;max-width:58ch}
+
+  /* para quem */
+  .branco{background:var(--foam)}
+  .lista-quem{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+  .lista-quem h3{font-size:1.375rem;margin-bottom:10px;font-weight:700}
+  .lista-quem p{color:var(--mute)}
+  .lista-quem div{border-top:4px solid var(--soap);padding-top:20px}
+
+  /* ciclo de 90 dias */
+  .ciclo{margin-top:56px;position:relative}
+  .trilho{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .fase{padding:0 28px 0 0}
+  .fase .ponto{display:flex;align-items:center;margin-bottom:24px}
+  .fase .ponto b{flex:none;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--foam);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:1.25rem}
+  .fase .ponto hr{flex:1;border:0;border-top:3px dashed var(--water);margin:0 0 0 12px}
+  .fase:last-child .ponto hr{border-top-style:solid;border-color:var(--soap)}
+  .fase small{display:block;font-weight:600;color:var(--water);margin-bottom:6px}
+  .fase h3{font-size:1.5rem;margin-bottom:12px;font-weight:700}
+  .fase ul{margin:0;padding-left:20px;color:var(--mute)}
+  .fase li{margin-bottom:6px}
+  .fim{margin-top:40px;display:inline-block;background:var(--soap);padding:10px 18px;border-radius:var(--radius-sm);font-weight:600}
+
+  /* comparação */
+  .compara{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border-radius:var(--radius-lg);overflow:hidden;border:2px solid var(--ink)}
+  .compara > div{padding:36px}
+  .compara .franq{background:var(--foam);color:var(--mute)}
+  .compara .sem{background:var(--ink);color:var(--foam)}
+  .compara h3{font-size:1.375rem;margin-bottom:20px}
+  .compara ul{list-style:none;margin:0;padding:0}
+  .compara li{padding:12px 0;border-top:1px solid var(--line)}
+  .compara .sem li{border-color:rgba(255,255,255,.18)}
+
+  /* investimento */
+  .preco{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .valor{background:var(--foam);border-radius:var(--radius-lg);padding:44px;border:2px solid var(--line)}
+  .valor .parc{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(3rem,7vw,4.5rem);line-height:1}
+  .valor .parc small{font-size:1.5rem;font-weight:700}
+  .valor .total{color:var(--mute);margin:10px 0 28px}
+  .valor ul{margin:0 0 32px;padding-left:20px}
+  .valor li{margin-bottom:8px}
+
+  /* perguntas */
+  details{border-top:2px solid var(--line);padding:22px 0}
+  details:last-of-type{border-bottom:2px solid var(--line)}
+  summary{cursor:pointer;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.25rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.75rem;line-height:1;color:var(--water);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:12px;color:var(--mute);max-width:64ch}
+  .faq{max-width:800px;margin-top:40px}
+
+  /* chamada final */
+  .final{background:var(--ink);color:var(--foam);text-align:center;padding:96px 0}
+  .final h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;max-width:18ch;margin:0 auto 20px}
+  .final p{color:#B9CCD8;max-width:48ch;margin:0 auto 36px;font-size:1.125rem}
+  .final .btn{background:var(--soap);color:var(--ink)}
+  .final .btn:hover{background:var(--foam)}
+  footer{background:var(--ink);color:#8FA8B8;text-align:center;padding:0 0 40px;font-size:.9rem}
+
+  @media (max-width:860px){
+    .hero .wrap,.preco{grid-template-columns:1fr}
+    .porta{max-width:320px;order:-1}
+    .lista-quem,.trilho,.compara{grid-template-columns:1fr}
+    .lista-quem{gap:28px}
+    .fase{padding:0 0 40px}
+    .fase .ponto hr{display:none}
+    section.bloco{padding:64px 0}
+    .wrap{padding:0 16px}
+    .compara > div,.valor{padding:28px}
+  }
+  @media (prefers-reduced-motion:reduce){.agua,.anel{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="marca"><i></i>Mentoria Lavanderia</div>
+    <a class="link" href="#investimento">Ver investimento</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Abra sua lavanderia self-service sem pagar franquia</h1>
+        <p class="sub">Uma mentoria de 3 meses com quem já montou a própria lavanderia. Do planejamento à inauguração, você decide cada passo com orientação de perto.</p>
+        <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20mentoria%20de%20lavanderia." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2.1 1.3 2.4 1.4.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>
+          Conversar no WhatsApp
+        </a>
+        <p class="nota">Resposta direta comigo, sem atendente.</p>
+      </div>
+
+      <div class="porta" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="anel">
+          <circle cx="100" cy="100" r="93" fill="none" stroke="#13324A" stroke-width="2" stroke-dasharray="2 9"/>
+        </svg>
+        <div class="vidro">
+          <div class="agua"></div>
+          <div style="position:relative">
+            <strong>90</strong>
+            <span>dias até a<br>inauguração</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco branco">
+    <div class="wrap">
+      <h2 class="titulo-sec">Para quem quer um negócio próprio, não uma marca alugada</h2>
+      <p class="lead">A mentoria é para quem quer abrir uma lavanderia de autoatendimento do zero e prefere ter liberdade sobre ponto, equipamentos e fornecedores.</p>
+      <div class="lista-quem">
+        <div>
+          <h3>Está começando do zero</h3>
+          <p>Ainda não sabe por onde começar, quanto investir nem quais equipamentos escolher.</p>
+        </div>
+        <div>
+          <h3>Desistiu da franquia</h3>
+          <p>Achou a taxa de entrada alta, não quer pagar royalties todo mês ou não quer ficar preso a um contrato.</p>
+        </div>
+        <div>
+          <h3>Quer evitar erros caros</h3>
+          <p>Prefere aprender com quem já passou pela montagem do que descobrir os problemas depois de investir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco">
+    <div class="wrap">
+      <h2 class="titulo-sec">O ciclo completo em 3 meses</h2>
+      <p class="lead">Cada mês tem um objetivo claro. Você avança com o próximo passo definido e não fica sozinho nas decisões.</p>
+      <div class="ciclo">
+        <div class="trilho">
+          <div class="fase">
+            <div class="ponto"><b>1</b><hr></div>
+            <small>Mês 1</small>
+            <h3>Planejar</h3>
+            <ul>
+              <li>Análise do ponto e da região</li>
+              <li>Estudo de viabilidade e investimento</li>
+              <li>Definição do modelo da sua loja</li>
+            </ul>
+          </div>
+          <div class="fase">
+            <div class="ponto"><b>2</b><hr></div>
+            <small>Mês 2</small>
+            <h3>Montar</h3>
+            <ul>
+              <li>Escolha de equipamentos e fornecedores</li>
+              <li>Projeto e obra da loja</li>
+              <li>Legalização e documentação</li>
+            </ul>
+          </div>
+          <div class="fase">
+            <div class="ponto"><b>3</b><hr></div>
+            <small>Mês 3</small>
+            <h3>Inaugurar</h3>
+            <ul>
+              <li>Sistema de pagamento e operação</li>
+              <li>Divulgação para o bairro</li>
+              <li>Preparação da abertura</li>
+            </ul>
+          </div>
+        </div>
+        <p class="fim">Dia 90: sua lavanderia de portas abertas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco branco">
+    <div class="wrap">
+      <h2 class="titulo-sec">Franquia ou negócio próprio?</h2>
+      <p class="lead">As duas opções funcionam. A diferença está em quem decide e para onde vai o dinheiro.</p>
+      <div class="compara">
+        <div class="franq">
+          <h3>Com franquia</h3>
+          <ul>
+            <li>Taxa de entrada para usar a marca</li>
+            <li>Royalties e taxas mensais</li>
+            <li>Fornecedores definidos pela rede</li>
+            <li>Regras e contrato da franqueadora</li>
+          </ul>
+        </div>
+        <div class="sem">
+          <h3>Com a mentoria</h3>
+          <ul>
+            <li>Sem taxa de franquia</li>
+            <li>Sem royalties: o lucro é todo seu</li>
+            <li>Você escolhe equipamentos e fornecedores</li>
+            <li>Marca e regras são suas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" id="investimento">
+    <div class="wrap preco">
+      <div>
+        <h2 class="titulo-sec">Investimento</h2>
+        <p class="lead">Um valor fechado pelos 3 meses de acompanhamento, do primeiro estudo até a inauguração.</p>
+      </div>
+      <div class="valor">
+        <div class="parc"><small>3x de R$ </small>2.000</div>
+        <p class="total">Total de R$ 6.000</p>
+        <ul>
+          <li>90 dias de mentoria individual</li>
+          <li>Acompanhamento do planejamento à abertura</li>
+          <li>Contato direto pelo WhatsApp</li>
+        </ul>
+        <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20a%20mentoria%20de%20lavanderia." target="_blank" rel="noopener">Quero começar a mentoria</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco branco">
+    <div class="wrap">
+      <h2 class="titulo-sec">Perguntas frequentes</h2>
+      <div class="faq">
+        <details>
+          <summary>Preciso ter experiência com lavanderia?</summary>
+          <p>Não. A mentoria foi pensada para quem está começando do zero e precisa de orientação em cada etapa.</p>
+        </details>
+        <details>
+          <summary>O valor da mentoria inclui os equipamentos?</summary>
+          <p>Não. Os R$ 6.000 são pelo acompanhamento. O investimento na loja (ponto, obra e equipamentos) é seu, e a mentoria ajuda você a planejar esse valor.</p>
+        </details>
+        <details>
+          <summary>E se eu ainda não tiver um ponto?</summary>
+          <p>Sem problema. A escolha do ponto faz parte do primeiro mês.</p>
+        </details>
+        <details>
+          <summary>Como funcionam os encontros?</summary>
+          <p>Vamos combinar juntos na primeira conversa. Chame no WhatsApp para tirar suas dúvidas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Sua lavanderia pode estar aberta em 90 dias</h2>
+      <p>Mande uma mensagem contando onde você está e o que já tem. Eu respondo pessoalmente.</p>
+      <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20mentoria%20de%20lavanderia." target="_blank" rel="noopener">Conversar no WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Mentoria Lavanderia Self-Service</div>
+</footer>
+
+</body>
+</html>
